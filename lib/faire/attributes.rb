@@ -13,11 +13,11 @@ module Faire
     end
 
     def input(name, klass_or_attributes = String, attributes = {})
-      if klass_or_attributes.is_a?(Class)
-        klass = klass_or_attributes
-      else
+      if klass_or_attributes.is_a?(Hash)
         klass = String
         attributes = klass_or_attributes
+      else
+        klass = klass_or_attributes
       end
 
       attrs = defaults.merge(attributes)
