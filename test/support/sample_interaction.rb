@@ -7,9 +7,9 @@ end
 class SampleInteraction
   include Faire
 
-  integer :name, nullify_blank: true
-  string :other, required: false
-  object :bill, Bill
+  input :name, nullify_blank: true
+  input :other, required: false
+  input :bill, Bill
 
   def execute
     bill

@@ -2,7 +2,7 @@ module Faire
   class Input
     attr_reader :name
 
-    def initialize(name, klass, **attributes)
+    def initialize(name, **attributes)
       @name = name
       @attributes = attributes
       @required = attributes.fetch(:required, false)

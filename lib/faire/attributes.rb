@@ -12,33 +12,18 @@ module Faire
       { nullify_blank: true, required: true }.freeze
     end
 
-    def string(name, attributes = {})
-      input(name, String, attributes)
-    end
+    def input(name, klass_or_attributes, attributes = {})
+      if klass_or_attributes.is_a?(Class)
+        klass = klass_or_attributes
+      else
+        klass = String
+        attributes = klass_or_attributes
+      end
 
-    def object(name, klass, attributes = {})
-      klass.include(Virtus.model)
-
-      input(name, klass, attributes)
-    end
-
-    def input(name, klass, attributes)
       attrs = defaults.merge(attributes)
 
-      self.inputs << Input.new(name, String, attrs)
+      self.inputs << Input.new(name, attrs)
       self.attribute(name, klass, attrs)
-    end
-
-    def integer(name, attributes = {})
-      input(name, Integer, attributes)
-    end
-
-    def float(name, attributes = {})
-      input(name, Float, attributes)
-    end
-
-    def date(name, attributes = {})
-      input(name, Date, attributes)
     end
   end
 end
