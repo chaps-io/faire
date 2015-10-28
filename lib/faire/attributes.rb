@@ -12,7 +12,7 @@ module Faire
       { nullify_blank: true, required: true }.freeze
     end
 
-    def input(name, klass_or_attributes, attributes = {})
+    def input(name, klass_or_attributes = String, attributes = {})
       if klass_or_attributes.is_a?(Class)
         klass = klass_or_attributes
       else
