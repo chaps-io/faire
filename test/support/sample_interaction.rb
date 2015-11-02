@@ -7,10 +7,10 @@ end
 class SampleInteraction
   include Faire
 
-  input :some_string
+  input :some_string, klass: String
   input :name, nullify_blank: true
   input :other, required: false
-  input :bill, Bill
+  input :bill, klass: Bill
 
   def execute
     bill

@@ -2,10 +2,10 @@ module Faire
   class Input
     attr_reader :name
 
-    def initialize(name, **attributes)
+    def initialize(name, required: false, **attributes)
       @name = name
       @attributes = attributes
-      @required = attributes.fetch(:required, false)
+      @required = !!required
     end
 
     def required?

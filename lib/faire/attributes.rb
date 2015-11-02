@@ -9,21 +9,14 @@ module Faire
     end
 
     def defaults
-      { nullify_blank: true, required: true }.freeze
+      { nullify_blank: true, required: true, klass: String }.freeze
     end
 
-    def input(name, klass_or_attributes = String, attributes = {})
-      if klass_or_attributes.is_a?(Hash)
-        klass = String
-        attributes = klass_or_attributes
-      else
-        klass = klass_or_attributes
-      end
+    def input(name, **attributes)
+      attributes = defaults.merge(attributes)
 
-      attrs = defaults.merge(attributes)
-
-      self.inputs << Input.new(name, attrs)
-      self.attribute(name, klass, attrs)
+      self.inputs << Input.new(name, attributes)
+      self.attribute(name, attributes[:klass], attributes)
     end
   end
 end
