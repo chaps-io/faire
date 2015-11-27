@@ -9,7 +9,7 @@ module Faire
     end
 
     def defaults
-      { nullify_blank: true, required: true, klass: String }.freeze
+      { nullify_blank: true, required: true, klass: BasicObject }.freeze
     end
 
     def input(name, **attributes)
