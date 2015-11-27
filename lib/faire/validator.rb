@@ -5,7 +5,11 @@ module Faire
     end
 
     def validate
-      @valid = self.class.required_inputs.all?{|object| self.public_send(object.name) }
+      @valid = inputs.all?(&:valid?)
+    end
+
+    def inputs
+      @inputs ||= self.class.inputs.map{|input| input.tap{|i| i.value = attributes[input.name] } }
     end
 
     def valid?
